@@ -34,3 +34,23 @@ print("last char is ", letters[len(letters)-1])
 
 
 print(teikums.split(" "))
+
+
+# syntax of format function
+
+sentence = "name {} lastname {} age {}".format("kristaps", "felzenbergs", "32")
+print(sentence)
+
+sentence = "name {0} lastname {0} age {1}".format("kristaps", "felzenbergs")
+print(sentence)
+
+
+profile = {"name": "kristaps", "lastname": "felzenbergs", "age": 32}
+sentence = "name {} lastname {} age {}".format(*profile.values())
+print(sentence)
+
+sentence = "name {name} lastname {lastname} age {age}".format(name="kristaps", lastname="felzenbergs", age=32)
+print(sentence)
+
+name = "kristaps"
+print(f"my names is {name}")
