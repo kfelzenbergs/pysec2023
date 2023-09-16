@@ -17,7 +17,7 @@ def create_connection(db_file):
 
 def create_table(conn):
     sql = ''' CREATE TABLE dns_domains(
-       domain text) '''
+       domain text, ip text, country_code text, country_name text, city text, latitude text, longitude text) '''
     cur = conn.cursor()
     cur.execute(sql)
     sql = ''' CREATE UNIQUE INDEX IF NOT EXISTS index_domain ON dns_domains (domain) '''
@@ -26,8 +26,8 @@ def create_table(conn):
     conn.commit()
 
 def create_record(conn, record):
-    sql = ''' INSERT OR REPLACE INTO dns_domains(domain)
-              VALUES(?) '''
+    sql = ''' INSERT OR REPLACE INTO dns_domains(domain, ip, country_code, country_name, city, latitude, longitude)
+              VALUES(?,?,?,?,?,?,?) '''
     cur = conn.cursor()
     cur.execute(sql, record)
     conn.commit()
